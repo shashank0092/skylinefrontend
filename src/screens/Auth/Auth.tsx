@@ -1,13 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import RegisterForm from './Forms/Register';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import LoginForm from './Forms/Login';
 
 interface AuthScreenProps {
   onLoginSuccess: () => void;
 }
 const AuthScreen: React.FC<AuthScreenProps> = ({onLoginSuccess}) => {
+
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={Styles.mainView}>
@@ -20,11 +24,25 @@ const AuthScreen: React.FC<AuthScreenProps> = ({onLoginSuccess}) => {
               />
             </View>
             <View style={{display: 'flex', gap: 40}}>
-              <View>
-                <Text style={Styles.RegisterText}>Register Here</Text>
+            <View>
+                <Text style={Styles.RegisterText}>
+                  {showLogin ? 'Login Here' : 'Register Here'}
+                </Text>
               </View>
+
+              {/* Choose which form to render */}
               <View>
-                <RegisterForm />
+                {showLogin ? (
+                  <LoginForm
+                    onLoginSuccess={onLoginSuccess}
+                    onSwitchToRegister={() => setShowLogin(false)}
+                  />
+                ) : (
+                  <RegisterForm
+                    onRegisterSuccess={onLoginSuccess}
+                    onSwitchToLogin={() => setShowLogin(true)}
+                  />
+                )}
               </View>
             </View>
           </View>
