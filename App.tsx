@@ -1,18 +1,27 @@
 import {useEffect, useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthScreen from './src/screens/Auth/Auth';
+import Home from './src/screens/Home';
+import DashboardBottomTab from './src/global/BottomNavigation';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 
 export type WithoutLoginStackList = {
   Auth: undefined;
+};
+
+export type WithLoginStackList = {
+  // Home: undefined;
+  navi: undefined;
 };
 
 const App = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const WithoutLoginStack = createNativeStackNavigator<WithoutLoginStackList>();
+  const WithLoginStack = createNativeStackNavigator<WithLoginStackList>();
   const handleLoginSuccess = () => {
     setIsLogin(true);
   };
@@ -36,8 +45,10 @@ const App = () => {
     console.log('shukla');
   }, []);
   return (
-    <View style={Style.container}>
-      {isLogin === false || isLogin === undefined ? (
+    <SafeAreaProvider>
+      <SafeAreaView style={Style.container}>
+        <View style={Style.container}>
+          {/* {isLogin === false || isLogin === undefined ? (
         <WithoutLoginStack.Navigator>
           <WithoutLoginStack.Screen name="Auth" options={{headerShown: false}}>
             {props => (
@@ -46,11 +57,18 @@ const App = () => {
           </WithoutLoginStack.Screen>
         </WithoutLoginStack.Navigator>
       ) : (
-        <View>
-          <Text>THIS IS WITH LOGIN SCREEN</Text>
+       <Text>HERE</Text>
+      )} */}
+          <WithLoginStack.Navigator>
+            <WithLoginStack.Screen
+              name="navi"
+              options={{headerShown: false}}
+              component={DashboardBottomTab}
+            />
+          </WithLoginStack.Navigator>
         </View>
-      )}
-    </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
