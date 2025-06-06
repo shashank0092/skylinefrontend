@@ -6,7 +6,12 @@ import {Button, TextInput} from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {RegisterValidationSchema} from './RegisterValidation';
 
-const RegisterForm = () => {
+interface RegisterFormProps {
+  onSwitchToLogin : () => void
+  onRegisterSuccess : () => void
+}
+
+const RegisterForm : React.FC<RegisterFormProps> = ({onSwitchToLogin}) => {
   const [loading, setLoading] = useState(false);
   const [GenderOpen, setGenderOpen] = useState(false);
   const [Gendervalue, setGenderValue] = useState(null);
@@ -235,7 +240,7 @@ const RegisterForm = () => {
                 Already have an account?{' '}
               </Text>
               <TouchableOpacity
-                onPress={() => console.log('Navigate to Login')}>
+                onPress={onSwitchToLogin}>
                 <Text style={Style.loginPromptButton}>Login Here</Text>
               </TouchableOpacity>
             </View>
