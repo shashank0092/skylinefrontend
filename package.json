@@ -15,8 +15,10 @@
     "resetstart": "npx react-native start --reset-cache"
   },
   "dependencies": {
+    "npm": "^11.4.1",
     "react": "19.0.0",
-    "react-native": "0.79.3"
+    "react-native": "0.79.3",
+    "react-native-splash-screen": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
