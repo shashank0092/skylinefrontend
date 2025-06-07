@@ -6,7 +6,6 @@ import Notes from '../../screens/ImportantNotes';
 import Report from '../../screens/Report';
 import Profile from '../../screens/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {TouchableOpacity} from 'react-native';
 import Header from '../Header';
 
 export type DashbaordBottomTabList = {
