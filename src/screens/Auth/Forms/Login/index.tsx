@@ -1,13 +1,10 @@
-import { Formik } from 'formik';
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { Text, TextInput } from 'react-native-paper';
+/* eslint-disable react-native/no-inline-styles */
+import {Formik} from 'formik';
+import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome'; // FontAwesome icons
-import { LoginValidationSchema } from './LoginValidation';
+import {LoginValidationSchema} from './LoginValidation';
 
 interface LoginFormProps {
   onLoginSuccess: () => void;
@@ -31,17 +28,9 @@ const LoginForm: React.FC<LoginFormProps> = ({
         console.log('Login form submitted:', values);
         // After successful login:
         onLoginSuccess();
-      }}
-    >
-      {({
-        handleChange,
-        handleBlur,
-        touched,
-        errors,
-        handleSubmit,
-        values,
-      }) => (
-        <View style={{ display: 'flex', gap: 20 }}>
+      }}>
+      {({handleChange, handleBlur, touched, errors, handleSubmit, values}) => (
+        <View style={{display: 'flex', gap: 20}}>
           {/* Email Field */}
           <View>
             <Text style={styles.labelStyle}>Email</Text>
@@ -59,8 +48,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
               outlineColor="#D1D1D1"
               activeOutlineColor="#D1D1D1"
               outlineStyle={{
-                borderColor:
-                  errors.email && touched.email ? 'red' : '#D1D1D1',
+                borderColor: errors.email && touched.email ? 'red' : '#D1D1D1',
                 borderWidth: 1.5,
                 borderRadius: 10,
               }}
@@ -116,55 +104,49 @@ const LoginForm: React.FC<LoginFormProps> = ({
             <TouchableOpacity
               onPress={handleSubmit as () => void}
               disabled={loading}
-              style={[styles.submitButton, loading && { opacity: 0.6 }]}
-            >
+              style={[styles.submitButton, loading && {opacity: 0.6}]}>
               <Text style={styles.submitButtonText}>Login</Text>
             </TouchableOpacity>
           </View>
-
 
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               marginVertical: 10,
-            }}
-          >
-            <View style={{ flex: 1, height: 1, backgroundColor: '#D1D1D1' }} />
+            }}>
+            <View style={{flex: 1, height: 1, backgroundColor: '#D1D1D1'}} />
             <Text
               style={{
                 marginHorizontal: 10,
                 color: '#898989',
                 fontWeight: '600',
-              }}
-            >
+              }}>
               OR
             </Text>
-            <View style={{ flex: 1, height: 1, backgroundColor: '#D1D1D1' }} />
+            <View style={{flex: 1, height: 1, backgroundColor: '#D1D1D1'}} />
           </View>
 
-          <View style={{ gap: 10, flexDirection: 'row', justifyContent: 'center' }}>
+          <View
+            style={{gap: 10, flexDirection: 'row', justifyContent: 'center'}}>
             {/* Google */}
             <TouchableOpacity
               onPress={() => console.log('Login with Google')}
-              style={[styles.socialButton, { backgroundColor: '#DB4437' }]}
-            >
+              style={[styles.socialButton, {backgroundColor: '#DB4437'}]}>
               <Icon name="google" size={24} color="white" />
             </TouchableOpacity>
 
             {/* Facebook */}
             <TouchableOpacity
               onPress={() => console.log('Login with Facebook')}
-              style={[styles.socialButton, { backgroundColor: '#1877F2' }]}
-            >
+              style={[styles.socialButton, {backgroundColor: '#1877F2'}]}>
               <Icon name="facebook" size={24} color="white" />
             </TouchableOpacity>
 
             {/* Twitter */}
             <TouchableOpacity
               onPress={() => console.log('Login with Twitter')}
-              style={[styles.socialButton, { backgroundColor: '#1DA1F2' }]}
-            >
+              style={[styles.socialButton, {backgroundColor: '#1DA1F2'}]}>
               <Icon name="twitter" size={24} color="white" />
             </TouchableOpacity>
           </View>
@@ -185,6 +167,7 @@ const styles = StyleSheet.create({
   labelStyle: {
     fontFamily: 'Inter_18pt-SemiBold',
     fontSize: 12,
+    color: 'black',
   },
   errorLabelStyle: {
     fontFamily: 'Inter_24pt-SemiBold',
@@ -201,7 +184,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 3,
   },
-  
+
   buttonContainer: {
     // to be Pushed
   },
@@ -212,7 +195,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.3,
     shadowRadius: 3,
   },

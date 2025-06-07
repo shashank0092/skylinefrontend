@@ -2,16 +2,16 @@
 import {Formik} from 'formik';
 import {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, TextInput} from 'react-native-paper';
+import {TextInput} from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {RegisterValidationSchema} from './RegisterValidation';
 
 interface RegisterFormProps {
-  onSwitchToLogin : () => void
-  onRegisterSuccess : () => void
+  onSwitchToLogin: () => void;
+  onRegisterSuccess: () => void;
 }
 
-const RegisterForm : React.FC<RegisterFormProps> = ({onSwitchToLogin}) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({onSwitchToLogin}) => {
   const [loading, setLoading] = useState(false);
   const [GenderOpen, setGenderOpen] = useState(false);
   const [Gendervalue, setGenderValue] = useState(null);
@@ -239,8 +239,7 @@ const RegisterForm : React.FC<RegisterFormProps> = ({onSwitchToLogin}) => {
               <Text style={Style.loginPromptText}>
                 Already have an account?{' '}
               </Text>
-              <TouchableOpacity
-                onPress={onSwitchToLogin}>
+              <TouchableOpacity onPress={onSwitchToLogin}>
                 <Text style={Style.loginPromptButton}>Login Here</Text>
               </TouchableOpacity>
             </View>

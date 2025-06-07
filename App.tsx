@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -7,8 +7,10 @@ import AuthScreen from './src/screens/Auth/Auth';
 import Home from './src/screens/Home';
 import DashboardBottomTab from './src/global/BottomNavigation';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import OnboardingScreens from './src/screens/Onboarding';
 
 export type WithoutLoginStackList = {
+  Onboarding: undefined;
   Auth: undefined;
 };
 
@@ -49,16 +51,23 @@ const App = () => {
       <SafeAreaView style={Style.container}>
         <View style={Style.container}>
           {/* {isLogin === false || isLogin === undefined ? (
-        <WithoutLoginStack.Navigator>
-          <WithoutLoginStack.Screen name="Auth" options={{headerShown: false}}>
-            {props => (
-              <AuthScreen {...props} onLoginSuccess={handleLoginSuccess} />
-            )}
-          </WithoutLoginStack.Screen>
-        </WithoutLoginStack.Navigator>
-      ) : (
-       <Text>HERE</Text>
-      )} */}
+            <WithoutLoginStack.Navigator initialRouteName="Onboarding">
+              <WithoutLoginStack.Screen
+                name="Onboarding"
+                component={OnboardingScreens}
+                options={{headerShown: false}}
+              />
+              <WithoutLoginStack.Screen
+                name="Auth"
+                options={{headerShown: false}}>
+                {props => (
+                  <AuthScreen {...props} onLoginSuccess={handleLoginSuccess} />
+                )}
+              </WithoutLoginStack.Screen>
+            </WithoutLoginStack.Navigator>
+          ) : (
+<></>
+          )} */}
           <WithLoginStack.Navigator>
             <WithLoginStack.Screen
               name="navi"
