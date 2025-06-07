@@ -5,6 +5,7 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome'; // FontAwesome icons
 import {LoginValidationSchema} from './LoginValidation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface LoginFormProps {
   onLoginSuccess: () => void;
@@ -26,7 +27,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
       validationSchema={LoginValidationSchema}
       onSubmit={values => {
         console.log('Login form submitted:', values);
-        // After successful login:
+        AsyncStorage.setItem('user_details', JSON.stringify('user'));
         onLoginSuccess();
       }}>
       {({handleChange, handleBlur, touched, errors, handleSubmit, values}) => (
@@ -102,7 +103,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
           {/* Submit Button */}
           <View style={styles.buttonContainer}>
             <TouchableOpacity
-              onPress={handleSubmit as () => void}
+              onPress={() => handleSubmit()}
               disabled={loading}
               style={[styles.submitButton, loading && {opacity: 0.6}]}>
               <Text style={styles.submitButtonText}>Login</Text>
