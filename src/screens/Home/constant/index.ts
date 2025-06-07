@@ -192,3 +192,17 @@ export const meetSetupData = [
   {id: 'meet4', meetId: 'def745', location: 'Chennai', time: '11:45 AM'},
   {id: 'meet5', meetId: 'ghi128', location: 'Hyderabad', time: '03:30 PM'},
 ];
+export const ActiveTripsData = [
+  {
+    id: '1',
+    date: '2025-06-10',
+    time: '10:00 AM',
+    mode: 'Bus',
+    transportNumber: 'B123',
+    from: 'Delhi',
+    to: 'Agra',
+    matchingUsersCount: 5,
+    chatRequestCount: 2,
+  },
+  // other trips...
+];

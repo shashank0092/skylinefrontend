@@ -10,10 +10,11 @@ import {
 import {Button} from 'react-native-paper';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import TripCard from './component/TripsCard';
-import {chatIds, meetSetupData, tripsData} from './constant';
+import {ActiveTripsData, chatIds, meetSetupData, tripsData} from './constant';
 import {useState} from 'react';
 import ChatCard from './component/RecentChartCard';
 import MeetSetupCard from './component/MeetSetupCard';
+import ActiveTripCard from './component/ActiveTripCard';
 
 const INITIAL_TRIP_COUNT = 5;
 const Home = () => {
@@ -33,6 +34,33 @@ const Home = () => {
                 <Text style={style.useIdText}>User Id:ABC 123</Text>
               </View>
               <View>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}>
+                  <View>
+                    <Text style={{fontSize: 20}}>Your Active Trips </Text>
+                  </View>
+                  <FlatList
+                    data={ActiveTripsData}
+                    keyExtractor={item => item.id}
+                    renderItem={({item}) => (
+                      <ActiveTripCard
+                        date={item.date}
+                        time={item.time}
+                        mode={item.mode}
+                        transportNumber={item.transportNumber}
+                        from={item.from}
+                        to={item.to}
+                        matchingUsersCount={item.matchingUsersCount}
+                        chatRequestCount={item.chatRequestCount}
+                      />
+                    )}
+                    scrollEnabled={false}
+                    contentContainerStyle={{gap: 10, paddingBottom: 16}}
+                  />
+                </View>
                 <View
                   style={{
                     display: 'flex',
