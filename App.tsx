@@ -8,6 +8,7 @@ import Home from './src/screens/Home';
 import DashboardBottomTab from './src/global/BottomNavigation';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import OnboardingScreens from './src/screens/Onboarding';
+import DrawerNaviagtion from './src/global/DrawerNaviagtion';
 
 export type WithoutLoginStackList = {
   Onboarding: undefined;
@@ -72,7 +73,7 @@ const App = () => {
             <WithLoginStack.Screen
               name="navi"
               options={{headerShown: false}}
-              component={DashboardBottomTab}
+              component={DrawerNaviagtion}
             />
           </WithLoginStack.Navigator>
         </View>

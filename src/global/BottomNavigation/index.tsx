@@ -6,6 +6,8 @@ import Notes from '../../screens/ImportantNotes';
 import Report from '../../screens/Report';
 import Profile from '../../screens/Profile';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {TouchableOpacity} from 'react-native';
+import Header from '../Header';
 
 export type DashbaordBottomTabList = {
   Home: undefined;
@@ -16,7 +18,7 @@ export type DashbaordBottomTabList = {
 
 const BottomTab = createBottomTabNavigator<DashbaordBottomTabList>();
 
-const DashboardBottomTab = () => {
+const DashboardBottomTab = ({navigation}: any) => {
   return (
     <BottomTab.Navigator
       screenOptions={{
@@ -47,7 +49,17 @@ const DashboardBottomTab = () => {
         name="Home"
         component={Home}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: '#ffffff',
+            elevation: 4,
+            shadowOpacity: 4,
+            borderBottomWidth: 0,
+          },
+          headerLeft: () => (
+            <Header onPress={() => navigation.toggleDrawer()} title="Home" />
+          ),
           tabBarIcon: ({focused}) =>
             focused ? (
               <Ionicons name="home" size={28} />
@@ -60,7 +72,17 @@ const DashboardBottomTab = () => {
         name="Notes"
         component={Notes}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: '#ffffff',
+            elevation: 4,
+            shadowOpacity: 4,
+            borderBottomWidth: 0,
+          },
+          headerLeft: () => (
+            <Header onPress={() => navigation.toggleDrawer()} title="Notes" />
+          ),
           tabBarIcon: ({focused}) =>
             focused ? (
               <Ionicons name="bookmark" size={28} />
@@ -73,7 +95,17 @@ const DashboardBottomTab = () => {
         name="Report"
         component={Report}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: '#ffffff',
+            elevation: 4,
+            shadowOpacity: 4,
+            borderBottomWidth: 0,
+          },
+          headerLeft: () => (
+            <Header onPress={() => navigation.toggleDrawer()} title="Report" />
+          ),
           tabBarIcon: ({focused}) =>
             focused ? (
               <Ionicons size={28} name="flag" />
@@ -86,7 +118,17 @@ const DashboardBottomTab = () => {
         name="Profile"
         component={Profile}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerTitle: '',
+          headerStyle: {
+            backgroundColor: '#ffffff',
+            elevation: 4,
+            shadowOpacity: 4,
+            borderBottomWidth: 0,
+          },
+          headerLeft: () => (
+            <Header onPress={() => navigation.toggleDrawer()} title="Profile" />
+          ),
           tabBarIcon: ({focused}) =>
             focused ? (
               <Ionicons size={28} name="person-circle" />
